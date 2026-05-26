@@ -1,0 +1,86 @@
+{{/*
+Template draft for `gometagen`.
+
+How to use it:
+- Edit this file for your own output format.
+- To generate into a file, pass an explicit `-out`:
+  gometagen generate -source . -template ./templates/gometagen.tmpl -out ./target/meta.txt
+- To generate into stdout, use `-stdout` instead of `-out`.
+
+What is available at the template root:
+- `.PackageName`
+  Package name used by the built-in Go renderer. Usually not needed in a custom template, but available.
+- `.ManifestPath`
+  Absolute path to the manifest file that was read.
+- `.GeneratedAt`
+  Generation time in RFC3339 format.
+- `.HashMode`
+  Hash mode: `git` or `content`.
+- `.HashPoint`
+  The effective path used for hashing:
+  for `git` this is the repository root or source path,
+  for `content` this is the joined list of effective source paths.
+- `.HashSource`
+  Joined list of effective source paths. Empty when git hash mode is used.
+- `.HashSources`
+  Effective source paths as a string array.
+- `.Manifest`
+  Raw manifest values without computed metadata.
+- `.Meta`
+  Normalized computed values prepared for rendering.
+
+Fields in `.Manifest`:
+- `.Manifest.Name`
+  Original `name` field from the manifest.
+- `.Manifest.Ver`
+  Original `ver` field from the manifest.
+
+Fields in `.Meta`:
+- `.Meta.Name`
+  Project name after normalization for rendering.
+- `.Meta.DateUpdate`
+  Date in `MM-DD-YYYY` format.
+- `.Meta.Hash`
+  Final hash value.
+- `.Meta.Version`
+  Full version string.
+- `.Meta.VersionMajor`
+  Major version part. Examples: `v1`, `release`.
+- `.Meta.VersionMinor`
+  Middle numeric version part.
+- `.Meta.VersionPatch`
+  Lowest numeric version part.
+
+Custom template functions:
+- `quote VALUE`
+  Escapes a string as a Go string literal.
+  Example: `{{ quote .Meta.Version }}`
+- `jsonQuote VALUE`
+  Escapes a string as a JSON string.
+  Example: `{"version": {{ jsonQuote .Meta.Version }}}`
+- `yamlInline VALUE`
+  Escapes a string as a single-line YAML value.
+- `yamlValue VALUE INDENT`
+  Escapes a string as a YAML value; for multi-line text it emits a block scalar.
+  `INDENT` controls indentation inside the block.
+
+Useful standard `text/template` features:
+- `if`, `else`, `with`, `range`
+- `printf`, `print`, `println`
+- `eq`, `ne`, `lt`, `gt`, `and`, `or`, `not`
+
+Short examples:
+- `{{ .Meta.Name }}`
+- `{{ if eq .HashMode "git" }}git={{ .Meta.Hash }}{{ end }}`
+- `{{ if .HashSource }}hash_source={{ .HashSource }}{{ end }}`
+- `{{ range .HashSources }}source={{ . }}{{ end }}`
+
+Minimal working template below.
+*/}}
+name={{ yamlInline .Meta.Name }}
+date_update={{ yamlInline .Meta.DateUpdate }}
+hash={{ yamlInline .Meta.Hash }}
+version={{ yamlInline .Meta.Version }}
+version_major={{ yamlInline .Meta.VersionMajor }}
+version_minor={{ .Meta.VersionMinor }}
+version_patch={{ .Meta.VersionPatch }}

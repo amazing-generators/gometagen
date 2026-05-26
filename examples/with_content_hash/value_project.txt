@@ -1,0 +1,5 @@
+name=example-content
+version=release.9.3-alpha.2
+hash=0b5bda523a1ee88cb49bc83a9cffbabfa625c3fc
+hash_point=/tmp/claude-agent-tmp/gometagen-example-content-source/assets
+generated_at=2026-05-26T18:05:00Z

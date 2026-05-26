@@ -1,0 +1,5 @@
+name=example-git
+version=v2.7.4
+hash=768c785488b6fec00c0a4e8e6e34e0612e0cba71
+hash_point=/tmp/claude-agent-tmp/gometagen-example-git-source
+generated_at=2026-05-26T18:00:00Z

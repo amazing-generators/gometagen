@@ -1,0 +1,18 @@
+name: 'Initialize workspace'
+description: 'Prepare workspace and normalize Go modules'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 🛠️ Prepare workspace
+      shell: bash
+      run: |
+        set -Eeuo pipefail
+        mkdir -p target tmp
+        if [[ -f go.work ]]; then
+          go work sync
+        fi
+
+    - name: 📥 go mod tidy
+      shell: bash
+      run: go mod tidy

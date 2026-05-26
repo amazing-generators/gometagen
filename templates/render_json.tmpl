@@ -1,0 +1,9 @@
+{
+"name": {{ jsonQuote .Meta.Name }},
+"date_update": {{ jsonQuote .Meta.DateUpdate }},
+"hash": {{ jsonQuote .Meta.Hash }},
+"version": {{ jsonQuote .Meta.Version }},
+"version_major": {{ jsonQuote .Meta.VersionMajor }},
+"version_minor": {{ .Meta.VersionMinor }},
+"version_patch": {{ .Meta.VersionPatch }}
+}

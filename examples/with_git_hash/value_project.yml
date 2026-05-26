@@ -1,0 +1,9 @@
+# Hash point: /tmp/claude-agent-tmp/gometagen-example-git-source
+# Generated at: 2026-05-26T18:00:00Z
+name: 'example-git'
+date_update: '05-26-2026'
+hash: '768c785488b6fec00c0a4e8e6e34e0612e0cba71'
+version: 'v2.7.4'
+version_major: 'v2'
+version_minor: 7
+version_patch: 4

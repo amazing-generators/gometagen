@@ -1,0 +1,9 @@
+# Hash point: {{ .HashPoint }}
+# Generated at: {{ .GeneratedAt }}
+name: {{ yamlInline .Meta.Name }}
+date_update: {{ yamlInline .Meta.DateUpdate }}
+hash: {{ yamlInline .Meta.Hash }}
+version: {{ yamlInline .Meta.Version }}
+version_major: {{ yamlInline .Meta.VersionMajor }}
+version_minor: {{ .Meta.VersionMinor }}
+version_patch: {{ .Meta.VersionPatch }}
