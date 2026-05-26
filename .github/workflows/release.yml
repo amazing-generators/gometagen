@@ -82,6 +82,8 @@ jobs:
         with:
           go-version: ${{ env.GO_VERSION }}
 
+      - uses: ./.github/actions/tidy-all-and-generate
+
       - name: 📦 Increment minor version
         shell: bash
         run: |
@@ -125,6 +127,8 @@ jobs:
       - uses: ./.github/actions/init-go
         with:
           go-version: ${{ env.GO_VERSION }}
+
+      - uses: ./.github/actions/tidy-all-and-generate
 
       - name: 🛠️ Cross-compile all targets
         shell: bash
